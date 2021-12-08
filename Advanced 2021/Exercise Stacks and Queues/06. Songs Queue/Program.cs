@@ -17,10 +17,13 @@ namespace _06._Songs_Queue
                 songsQueue.Enqueue(song);
             }
 
-            string[] command = Console.ReadLine().Split(" ").ToArray();
+            
 
             while (songsQueue.Count()>0)
             {
+
+                string[] command = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+
                 switch (command[0])
                 {
                     case "Play":
@@ -41,8 +44,6 @@ namespace _06._Songs_Queue
                         Console.WriteLine(string.Join(", ", songsQueue));
                         break;
                 }
-
-                command = Console.ReadLine().Split(" ").ToArray();
 
             }
 
