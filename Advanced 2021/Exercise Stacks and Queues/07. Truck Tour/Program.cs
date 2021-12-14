@@ -29,11 +29,11 @@ namespace _07._Truck_Tour
                 {
                     fuelInTank += pump[0];
                     fuelInTank -= pump[1];
-                    if (fuelInTank <= 0)
+                    if (fuelInTank < 0)
                     {
                         startPump++;
-                        petrolPumps.Dequeue();
-                        petrolPumps.Enqueue(pump);
+                        int[] temp = petrolPumps.Dequeue();
+                        petrolPumps.Enqueue(temp);
                         break;
                     }
                 }
@@ -50,8 +50,3 @@ namespace _07._Truck_Tour
         }
     }
 }
-
-
-
-
-
