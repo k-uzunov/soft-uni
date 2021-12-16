@@ -43,7 +43,6 @@ namespace _09._Simple_Text_Editor
                 {
                     text.Clear();
                     text.Append(previousVersion.Pop());
-                    Console.WriteLine("Undo");
                 }
             }
         }
