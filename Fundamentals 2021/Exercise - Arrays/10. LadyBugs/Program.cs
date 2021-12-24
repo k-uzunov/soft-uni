@@ -9,11 +9,11 @@ namespace _10._LadyBugs
         {
             int fieldSize = int.Parse(Console.ReadLine());
             int[] ladyBugs = new int[fieldSize];
-            ladyBugs.Initialize();
+            //ladyBugs.Initialize();
 
             int[] indexes = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
 
-            foreach(int index in indexes)
+            foreach (int index in indexes)
             {
                 if (index >= 0 && index < fieldSize)
                 {
@@ -27,17 +27,17 @@ namespace _10._LadyBugs
             {
                 int index = int.Parse(command[0]);
                 string direction = command[1];
-                int length = int.Parse(command [2]);
-                
-                if(index >= 0 && index < fieldSize && ladyBugs[index] == 1)
+                int length = int.Parse(command[2]);
+
+                if (index >= 0 && index < fieldSize && ladyBugs[index] == 1 && length !=0)
                 {
                     if (direction == "right")
                     {
                         int newIndex = index + length;
 
-                        while(newIndex >= 0 && newIndex < fieldSize)
+                        while (newIndex >= 0 && newIndex < fieldSize)
                         {
-                            if(ladyBugs[newIndex] == 1)
+                            if (ladyBugs[newIndex] == 1)
                             {
                                 //New index is ocupied. Ladybug flies length number indexes to the right
                                 newIndex += length;
