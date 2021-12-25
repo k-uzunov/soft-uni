@@ -17,7 +17,7 @@ namespace _05._Longest_Increasing_Subsequence
 
                 for (int left = 0; left < p; left++)
                 {
-                    if (nums[left] < nums[p])
+                    if (nums[left] < nums[p] && len[left] >= len[p] )
                     {
                         //If left number is smaller than number on the position
                         //Save it's position, and increase the legth
