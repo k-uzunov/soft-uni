@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace _03._Recursive_Fibonacci
 {
@@ -8,7 +9,7 @@ namespace _03._Recursive_Fibonacci
         {
             int n = int.Parse(Console.ReadLine());
 
-            int[] fibunaci = new int[n];
+            BigInteger[] fibunaci = new BigInteger[n];
 
             for(int i = 0; i<n; i++)
             {
