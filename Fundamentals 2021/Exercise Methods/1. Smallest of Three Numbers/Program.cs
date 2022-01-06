@@ -4,6 +4,7 @@ namespace _1._Smallest_of_Three_Numbers
 {
     class Program
     {
+        /*
         static void Main(string[] args)
         {
             int a = int.Parse(Console.ReadLine());
@@ -22,6 +23,22 @@ namespace _1._Smallest_of_Three_Numbers
                 Console.WriteLine(n2);
            else
                 Console.WriteLine(n3);
+        }
+        */
+
+        static void Main(string[] args)
+        {
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+            int c = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(GetSmallest(a, GetSmallest(b, c)));
+        }
+
+        static int GetSmallest(int a, int b)
+        {
+            if (a < b) return a;
+            else return b;
         }
     }
 }
