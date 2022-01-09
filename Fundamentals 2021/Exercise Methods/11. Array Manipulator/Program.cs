@@ -214,7 +214,7 @@ namespace _11._Array_Manipulator
             {
                 for (int i = 0; i < array.Length && arrayLength < count; i++)
                 {
-                    if (array[i] % 2 == 0 && array[i] != 0)
+                    if (array[i] % 2 == 0)
                     {
                         arrayLength++;
                     }
@@ -225,7 +225,7 @@ namespace _11._Array_Manipulator
 
                 for (int i = 0; i < array.Length && resultIndex < arrayLength; i++)
                 {
-                    if (array[i] % 2 == 0 && array[i] != 0)
+                    if (array[i] % 2 == 0)
                     {
                         result[resultIndex] = array[i];
                         resultIndex++;
