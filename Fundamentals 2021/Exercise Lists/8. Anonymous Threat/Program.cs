@@ -8,7 +8,7 @@ namespace _8._Anonymous_Threat
     {
         static void Main(string[] args)
         {
-            List<string> input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> input = Console.ReadLine().Split(" ").ToList();
             string[] command = Console.ReadLine().Split(" ");
 
             while(command[0] != "3:1")
@@ -34,10 +34,10 @@ namespace _8._Anonymous_Threat
         static void Merge(List<string> listToMerge, int startIndex, int endIndex)
         {
             if (startIndex < 0) startIndex = 0;
-            else if(startIndex >= listToMerge.Count) startIndex = listToMerge.Count - 1;
+            else if(startIndex >= listToMerge.Count) return;
 
             if (endIndex >= listToMerge.Count) endIndex = listToMerge.Count - 1;
-            else if (endIndex < 0) endIndex = 0;
+            else if (endIndex < 0) return;
 
             int end = endIndex - startIndex;
 
@@ -50,8 +50,10 @@ namespace _8._Anonymous_Threat
 
         static void Divide(List<string> listToDivide, int index, int partitions)
         {
-            int partitionSize = listToDivide[index].Length / partitions;
             string stringToDivide = listToDivide[index];
+            if (partitions > stringToDivide.Length || partitions == 0) return;
+            
+            int partitionSize = stringToDivide.Length / partitions;
             listToDivide.RemoveAt(index);
 
             int startIndex = 0;
