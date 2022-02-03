@@ -1,5 +1,5 @@
 function solve() {
-   // 87/100 в Джъдж
+
    let boughtProductsList = [];
    let totalPrice = 0;
    
@@ -13,11 +13,11 @@ function solve() {
    });
 
    function checkout(){
+      document.querySelector("textarea").textContent += `You bought ${boughtProductsList.join(", ")} for ${totalPrice.toFixed(2)}.`
       addProductButtons.forEach(buttonElement => {
          buttonElement.removeEventListener('click',addProduct)
       });
-
-      document.querySelector("textarea").textContent += `You bought ${boughtProductsList.join(", ")} for ${totalPrice.toFixed(2)}.`
+      checkoutButtonElement.removeEventListener('click', checkout);
    }
 
    function addProduct(event){
