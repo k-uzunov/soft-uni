@@ -1,5 +1,5 @@
 function solve() {
-   //debugger;
+   // 87/100 в Джъдж
    let boughtProductsList = [];
    let totalPrice = 0;
    
