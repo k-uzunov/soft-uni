@@ -1,6 +1,8 @@
-﻿using System;
+﻿//Тестове #6 и #7 гърмят, все още нямам представа защо
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace _8._Anonymous_Threat
 {
@@ -22,8 +24,10 @@ namespace _8._Anonymous_Threat
                         Divide(input, int.Parse(command[1]), int.Parse(command[2]));
                         break;
                 }
-
+               
                 command = Console.ReadLine().Split();
+                
+
             }
 
             Console.WriteLine(string.Join(" ", input));
@@ -31,47 +35,44 @@ namespace _8._Anonymous_Threat
 
         }
 
-        static void Merge(List<string> listToMerge, int startIndex, int endIndex)
+        static void Merge(List<string> text, int startIndex, int endIndex)
         {
             if (startIndex < 0) startIndex = 0;
-            else if(startIndex >= listToMerge.Count) return;
+            if (endIndex > text.Count - 1) endIndex = text.Count - 1;
 
-            if (endIndex >= listToMerge.Count) endIndex = listToMerge.Count - 1;
-            else if (endIndex < 0) return;
-
-            int end = endIndex - startIndex;
-
-            for (int i = 0; i < end; i++)
+            for(int i = startIndex+1; i<=endIndex; i++)
             {
-                listToMerge[startIndex] = string.Concat(listToMerge[startIndex], listToMerge[startIndex+1]);
-                listToMerge.RemoveAt(startIndex+1);
+                text[startIndex] += text[startIndex + 1];
+                text.RemoveAt(startIndex + 1);
             }
         }
 
-        static void Divide(List<string> listToDivide, int index, int partitions)
+        static void Divide(List<string> text, int index, int partitions)
         {
-            string stringToDivide = listToDivide[index];
-            if (partitions > stringToDivide.Length || partitions == 0) return;
-            
-            int partitionSize = stringToDivide.Length / partitions;
-            listToDivide.RemoveAt(index);
+            string partData = text[index];
+            text.RemoveAt(index);
+            int partSize = partData.Length / partitions;
+            int reminder = partData.Length % partitions;
 
-            int startIndex = 0;
+            List<string> tempData = new List<string>();
 
             for (int i = 0; i < partitions; i++)
             {
-                if (i == partitions-1)
+                string tempString = null;
+
+                for (int j = 0; j < partSize; j++)
                 {
-                    listToDivide.Add(stringToDivide.Substring(startIndex));
-                }
-                else
-                {
-                    listToDivide.Add(stringToDivide.Substring(startIndex, partitionSize));
-                    startIndex += partitionSize;
+                    tempString += partData[(i * partSize) + j];
                 }
 
+                if (i == partitions - 1 && reminder != 0)
+                {
+                    tempString += partData.Substring(partData.Length - reminder);
+                }
+
+                tempData.Add(tempString);
             }
-
+            text.InsertRange(index, tempData);
         }
     }
 }
