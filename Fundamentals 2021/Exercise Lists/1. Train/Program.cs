@@ -13,19 +13,19 @@ namespace _1._Train
 
             string command = Console.ReadLine();
 
-            while(command != "end")
+            while (command != "end")
             {
                 string[] commandArgs = command.Split();
 
-                if(commandArgs[0] == "Add")
+                if (commandArgs[0] == "Add")
                 {
                     wagons.Add(int.Parse(commandArgs[1]));
                 }
                 else
                 {
-                    for(int i = 0; i < wagons.Count; i++)
+                    for (int i = 0; i < wagons.Count; i++)
                     {
-                        if(wagons[i] + int.Parse(commandArgs[0]) <= maxCapacity)
+                        if (wagons[i] + int.Parse(commandArgs[0]) <= maxCapacity)
                         {
                             wagons[i] += int.Parse(commandArgs[0]);
                             break;

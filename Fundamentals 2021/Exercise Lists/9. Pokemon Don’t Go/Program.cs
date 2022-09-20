@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace _9._Pokemon_Don_t_Go
@@ -12,16 +11,17 @@ namespace _9._Pokemon_Don_t_Go
             List<int> pokemons = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
             int sum = 0;
 
-            while(pokemons.Count > 0)
+            while (pokemons.Count > 0)
             {
                 int inputIndex = int.Parse(Console.ReadLine());
 
-                    sum += capturePokemon(pokemons, inputIndex, sum);
+                sum += capturePokemon(pokemons, inputIndex, sum);
             }
             Console.WriteLine(sum);
         }
 
-        static int capturePokemon(List<int> elements, int index, int sum) {
+        static int capturePokemon(List<int> elements, int index, int sum)
+        {
             int element;
 
             if (index < 0)
@@ -41,7 +41,7 @@ namespace _9._Pokemon_Don_t_Go
                 element = elements[index];
                 elements.RemoveAt(index);
             }
-            
+
             for (int i = 0; i < elements.Count; i++)
             {
                 if (elements[i] <= element)

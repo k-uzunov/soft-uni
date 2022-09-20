@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace _8._Anonymous_Threat
 {
@@ -13,7 +12,7 @@ namespace _8._Anonymous_Threat
             List<string> input = Console.ReadLine().Split(" ").ToList();
             string[] command = Console.ReadLine().Split(" ");
 
-            while(command[0] != "3:1")
+            while (command[0] != "3:1")
             {
                 switch (command[0])
                 {
@@ -24,9 +23,9 @@ namespace _8._Anonymous_Threat
                         Divide(input, int.Parse(command[1]), int.Parse(command[2]));
                         break;
                 }
-               
+
                 command = Console.ReadLine().Split();
-                
+
 
             }
 
@@ -40,7 +39,7 @@ namespace _8._Anonymous_Threat
             if (startIndex < 0) startIndex = 0;
             if (endIndex > text.Count - 1) endIndex = text.Count - 1;
 
-            for(int i = startIndex+1; i<=endIndex; i++)
+            for (int i = startIndex + 1; i <= endIndex; i++)
             {
                 text[startIndex] += text[startIndex + 1];
                 text.RemoveAt(startIndex + 1);

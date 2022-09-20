@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _6._Cards_Game
 {
@@ -50,7 +50,7 @@ namespace _6._Cards_Game
             //if (playerOne.Count > 0) Console.WriteLine($"First player wins! Sum: {playerOne.Sum()}");
             //else Console.WriteLine($"Second player wins! Sum: {playerTwo.Sum()}");
             Console.WriteLine(playerOne.Count < playerTwo.Count ? $"Second player wins! Sum: {playerTwo.Sum()}" : $"First player wins! Sum: {playerOne.Sum()}");
-        
+
         }
     }
 }

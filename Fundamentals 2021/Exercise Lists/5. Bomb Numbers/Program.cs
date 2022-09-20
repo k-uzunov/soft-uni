@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 namespace _5._Bomb_Numbers
 {
     class Program
@@ -35,7 +35,7 @@ namespace _5._Bomb_Numbers
 
                     if (bombIndex - bombPower < 0)
                     {
-                        numbers.RemoveRange(0, bombIndex+1);
+                        numbers.RemoveRange(0, bombIndex + 1);
                     }
                     else
                     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace _10._SoftUni_Course_Planning
@@ -12,8 +11,8 @@ namespace _10._SoftUni_Course_Planning
             List<string> lessons = Console.ReadLine().Split(", ").ToList();
 
             string input = Console.ReadLine();
-            
-            while(input != "course start")
+
+            while (input != "course start")
             {
                 string[] inputElements = input.Split(":");
                 string command = inputElements[0];
@@ -21,7 +20,7 @@ namespace _10._SoftUni_Course_Planning
                 switch (command)
                 {
                     case "Add":
-                        Add(inputElements[1],lessons);
+                        Add(inputElements[1], lessons);
                         break;
                     case "Insert":
                         Insert(inputElements[1], int.Parse(inputElements[2]), lessons);
@@ -40,23 +39,20 @@ namespace _10._SoftUni_Course_Planning
                 input = Console.ReadLine();
             }
 
-            foreach(string lesson in lessons)
+            foreach (string lesson in lessons)
             {
-                Console.WriteLine($"{lessons.IndexOf(lesson)+1}.{lesson}");
+                Console.WriteLine($"{lessons.IndexOf(lesson) + 1}.{lesson}");
             }
         }
 
         private static void Exercise(string lessonTitle, List<string> lessons)
         {
-            if (lessons.Contains(lessonTitle))
+            if (lessons.Contains(lessonTitle) && !lessons.Contains($"{lessonTitle}-Exercise"))
             {
                 int lessonIndex = lessons.IndexOf(lessonTitle);
-                if (!(lessons[lessonIndex+1] == ($"{lessonTitle}-Exercise")))
-                {
-                    lessons.Insert(lessonIndex+1, $"{lessonTitle}-Exercise");
-                }
+                lessons.Insert(lessonIndex + 1, $"{lessonTitle}-Exercise");
             }
-            else
+            else if (!lessons.Contains(lessonTitle))
             {
                 lessons.Add(lessonTitle);
                 lessons.Add($"{lessonTitle}-Exercise");
@@ -69,31 +65,24 @@ namespace _10._SoftUni_Course_Planning
             {
                 int index1 = lessons.IndexOf(lessonTitle1);
                 int index2 = lessons.IndexOf(lessonTitle2);
-                string exercise1 = String.Empty;
-                string exercise2 = String.Empty;
-                List<string> temp = new List<string>();
+
+                string temp = lessons[index1];
+                lessons[index1] = lessons[index2];
+                lessons[index2] = temp;
+
                 if (lessons.Contains($"{lessonTitle1}-Exercise"))
                 {
-                    temp.AddRange(lessons.GetRange(index1, 2));
-                    lessons.RemoveRange(index1, 2);
-                }
-                else
-                {
-                    temp.AddRange(lessons.GetRange(index1, 1));
-                    lessons.RemoveAt(index1);
+                    lessons.Insert(index2 + 1, lessons[index1 + 1]);
+                    lessons.RemoveAt(index1 + 1);
                 }
 
-                if (lessons.Contains($"{lessonTitle2}-Exercise"))
+                if(lessons.Contains($"{lessonTitle2}-Exercise"))
                 {
-                    lessons.InsertRange(index1, lessons.GetRange(index2, 2));
-                    lessons.RemoveRange(index2, 2);
-                    lessons.InsertRange(index2, temp);
-                }
-                else
-                {
-                    lessons.Insert(index1, lessonTitle2);
-                    lessons.RemoveAt(index2);
-                    lessons.InsertRange(index2, temp);
+                    index1 = lessons.IndexOf(lessonTitle2);
+                    index2 = lessons.IndexOf($"{lessonTitle2}-Exercise");
+
+                    lessons.Insert(index1 + 1, lessons[index2]);
+                    lessons.RemoveAt(index2+1);
                 }
             }
         }
@@ -107,11 +96,11 @@ namespace _10._SoftUni_Course_Planning
                 {
                     lessons.RemoveRange(index, 2);
                 }
-                    lessons.Remove(lessonTitle);
+                lessons.Remove(lessonTitle);
             }
         }
 
-        private static void Insert(string lessonTitle, int index , List<string> lessons)
+        private static void Insert(string lessonTitle, int index, List<string> lessons)
         {
             if (!lessons.Contains(lessonTitle))
             {
@@ -121,7 +110,8 @@ namespace _10._SoftUni_Course_Planning
 
         private static void Add(string lessonTitle, List<string> lessons)
         {
-            if (!lessons.Contains(lessonTitle)) {
+            if (!lessons.Contains(lessonTitle))
+            {
                 lessons.Add(lessonTitle);
             }
         }

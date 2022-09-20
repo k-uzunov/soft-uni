@@ -11,10 +11,10 @@ namespace _3._House_Party
             List<string> guests = new List<string>();
             int numOfCmds = int.Parse(Console.ReadLine());
 
-            for(int i = 1; i <=numOfCmds; i++)
+            for (int i = 1; i <= numOfCmds; i++)
             {
                 string[] command = Console.ReadLine().Split(' ').ToArray();
-                if(command[2] == "going!")
+                if (command[2] == "going!")
                 {
                     if (guests.Contains(command[0]))
                     {
@@ -24,7 +24,8 @@ namespace _3._House_Party
                     {
                         guests.Add(command[0]);
                     }
-                }else if (command[2] == "not")
+                }
+                else if (command[2] == "not")
                 {
                     if (guests.Contains(command[0]))
                     {

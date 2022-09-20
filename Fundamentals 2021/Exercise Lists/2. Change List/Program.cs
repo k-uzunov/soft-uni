@@ -13,13 +13,14 @@ namespace _2._Change_List
                                     .Select(int.Parse)
                                     .ToList();
             string[] command = Console.ReadLine().Split().ToArray();
-            
-            while(command[0] != "end")
+
+            while (command[0] != "end")
             {
                 if (command[0] == "Delete")
                 {
                     integers.RemoveAll(x => x == int.Parse(command[1]));
-                }else if (command[0] == "Insert")
+                }
+                else if (command[0] == "Insert")
                 {
                     int number = int.Parse(command[1]);
                     int index = int.Parse(command[2]);

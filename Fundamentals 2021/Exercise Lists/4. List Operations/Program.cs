@@ -10,18 +10,19 @@ namespace _4._List_Operations
             List<int> numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
             string[] command = Console.ReadLine().Split().ToArray();
 
-            while(command[0] != "End")
+            while (command[0] != "End")
             {
-                if(command[0] == "Add")
+                if (command[0] == "Add")
                 {
                     int item = int.Parse(command[1]);
                     numbers.Add(item);
-                }else if(command[0] == "Insert")
+                }
+                else if (command[0] == "Insert")
                 {
                     int item = int.Parse(command[1]);
                     int index = int.Parse(command[2]);
 
-                    if(index < 0 || index >= numbers.Count)
+                    if (index < 0 || index >= numbers.Count)
                     {
                         Console.WriteLine("Invalid index");
                     }
@@ -29,7 +30,8 @@ namespace _4._List_Operations
                     {
                         numbers.Insert(index, item);
                     }
-                }else if(command[0] == "Remove")
+                }
+                else if (command[0] == "Remove")
                 {
                     int index = int.Parse(command[1]);
 
@@ -41,12 +43,13 @@ namespace _4._List_Operations
                     {
                         numbers.RemoveAt(index);
                     }
-                }else if (command[0] == "Shift")
+                }
+                else if (command[0] == "Shift")
                 {
                     int count = int.Parse(command[2]);
-                    if(command[1] == "left")
+                    if (command[1] == "left")
                     {
-                        for(int i = 0; i < count % numbers.Count; i++)
+                        for (int i = 0; i < count % numbers.Count; i++)
                         {
                             int temp = numbers[0];
                             numbers.RemoveAt(0);
@@ -57,7 +60,7 @@ namespace _4._List_Operations
                     {
                         for (int i = 0; i < count % numbers.Count; i++)
                         {
-                            int temp = numbers[numbers.Count-1];
+                            int temp = numbers[numbers.Count - 1];
                             numbers.RemoveAt(numbers.Count - 1);
                             numbers.Insert(0, temp);
                         }
